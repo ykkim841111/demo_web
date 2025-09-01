@@ -1,0 +1,21 @@
+spring:
+  application: 
+    name: demo_web
+  profiles:
+    active: local
+#  thymeleaf: 
+#    prefix: classpath:/templates/
+#    check-template-location: true
+#    suffix: .html
+#    mode: HTML
+#    cache: false # default true, 개발 시에는 false로 두는 것이 좋음
+
+server:
+  error:
+    #오류 응답에 exception의 내용을 포함할지 여부
+    include-exception: TRUE
+    # 오류 응답에 stacktrace 내용을 포함할지 여부 (ALWAYS, NEVER, ON_TRACE_PARAM)
+    include-stacktrace: ALWAYS
+    #브라우저 요청에 대해 서버 오류시 기본으로 노출할 페이지를 사용할지 여부
+    whitelabel:
+      enabled: FALSE

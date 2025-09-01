@@ -1,0 +1,27 @@
+# db 생성
+create database demo_web_db;
+create user demo_web@'localhost';
+create user demo_web@'%';
+grant all privileges on demo_web_db.* to demo_web@'localhost';
+grant all privileges on demo_web_db.* to demo_web@'%';
+flush privileges;
+
+create database demo_web2_db;
+create user demo_web2@'localhost';
+create user demo_web2@'%';
+grant all privileges on demo_web2_db.* to demo_web2@'localhost';
+grant all privileges on demo_web2_db.* to demo_web2@'%';
+flush privileges;
+
+# master
+use demo_web_db;
+CREATE TABLE SALARY(ID INT NOT NULL PRIMARY KEY, NAME VARCHAR(10), EMAIL(VARCHAR(20) NOT NULL);
+INSERT INTO SALARY VALUES (1, 'AAA', 'AAA@example.com');
+INSERT INTO SALARY VALUES (2, 'BBB', 'BBB@example.com');
+
+
+#slave1
+use demo_web2_db;
+CREATE TABLE COUNTRY(ID INT NOT NULL PRIMARY KEY, CONTINENT VARCHAR(20), COUNTRY VARCHAR(20) NOT NULL);
+INSERT INTO COUNTRY VALUES (1, 'Asia', 'Korea');
+INSERT INTO COUNTRY VALUES (2, 'Asia', 'Japan');
