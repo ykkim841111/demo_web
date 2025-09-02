@@ -1,0 +1,42 @@
+spring:
+  thymeleaf: 
+    prefix: classpath:templates/
+    check-template-location: true
+    suffix: .html
+    mode: HTML
+    cache: false # default true, 개발 시에는 false로 두는 것이 좋음
+#  datasource: 
+##    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+##    url: jdbc:mysql://localhost:3306/demo_web_db?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    url: jdbc:log4jdbc:mysql://localhost:3306/demo_web_db?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    username: demo_web
+#    password: demo_web
+#    hikari:
+#      connection-test-query: SELECT 1
+  datasource: 
+    master:
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#      jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/demo_web_db?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      jdbc-url: jdbc:log4jdbc:mysql://182.172.138.189:3306/demo_web_db?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      username: demo_web
+      password: demo_web
+      hikari:
+        connection-test-query: SELECT 1
+    slave-1:
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#      jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/demo_web2_db?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      jdbc-url: jdbc:log4jdbc:mysql://182.172.138.189:3306/demo_web2_db?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      username: demo_web2
+      password: demo_web2
+      hikari:
+        connection-test-query: SELECT 1
+
+logging:
+  config: classpath:logback-${spring.profiles.active}.xml
+
+mybatis:
+  mapper-locations: classpath:/mappers/**/*.xml
+  type-aliases-package: com.example.demo.model
+server:
+  port: 8181
